@@ -4,11 +4,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class OneController {
+public class Index {
 
     @RequestMapping("/index")
     public String index() {
+
         return "hello spring boot";
+
     }
 
 }
