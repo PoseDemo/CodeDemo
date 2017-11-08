@@ -1,4 +1,4 @@
-package com.demo.word;
+package com.demo.document.word;
 
 import com.aspose.words.*;
 import org.jsoup.Jsoup;
