@@ -15,17 +15,14 @@ import java.util.Map;
 
 public class Word2HTML {
 
-    private static boolean getLicense() {
-        boolean result = false;
+    private static void getLicense() {
         try {
             InputStream is = Word2HTML.class.getClassLoader().getResourceAsStream("license.xml");
             License aposeLic = new License();
             aposeLic.setLicense(is);
-            result = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
     }
 
     private static Element deletePageNode(Element body) {
@@ -64,7 +61,7 @@ public class Word2HTML {
 
     private static String getDocxHTMLContext(String filepath, String savepath) {
         getLicense();
-        Map<String, String> m = new HashMap<String, String>();
+        Map<String, String> m = new HashMap<>();
         try {
             Document doc = new Document(filepath);
             @SuppressWarnings("unchecked")
@@ -77,7 +74,9 @@ public class Word2HTML {
                     String path = "D:/" + savepath;
                     File dir = new File(path);
                     if (!dir.exists()) {
-                        dir.mkdirs();
+                        if (!dir.mkdirs()) {
+                            System.out.println("目录：" + dir + "创建失败");
+                        }
                     }
                     String imageName = new Date().getTime() + "_" + type;
                     String imagePath = savepath + imageName;
@@ -105,7 +104,7 @@ public class Word2HTML {
 
     private static String getDocHTMLContext(String filepath, String savepath) {
         getLicense();
-        Map<String, String> m = new HashMap<String, String>();
+        Map<String, String> m = new HashMap<>();
         try {
             Document doc = new Document(filepath);
             @SuppressWarnings("unchecked")
@@ -118,7 +117,9 @@ public class Word2HTML {
                     String path = "D:/" + savepath;
                     File dir = new File(path);
                     if (!dir.exists()) {
-                        dir.mkdirs();
+                        if (!dir.mkdirs()) {
+                            System.out.println("目录：" + dir + "创建失败");
+                        }
                     }
                     String imageName = new Date().getTime() + "_" + type;
                     String imagePath = savepath + imageName;
